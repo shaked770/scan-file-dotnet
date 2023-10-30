@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try something</title>
+  </head>
+  <body>
+    <script>
+      window.addEventListener('load', () => {
+        document.getElementById('upload').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const form = document.getElementById('upload');
+          const formData = new FormData(form);
+          fetch('/', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+            },
+            body: formData,
+          });
+        });
+      });
+    </script>
+    <form id="upload" method="post" enctype="multipart/form-data" action="/">
+      <label for="file">File</label>
+      <input id="file" name="file" type="file" />
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+</html>
